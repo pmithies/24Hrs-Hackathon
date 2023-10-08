@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image:url("https://img.freepik.com/free-photo/pieces-blue-stationery_23-2148169528.jpg?w=1380&t=st=1696716587~exp=1696717187~hmac=97762eb7d262b6dc11739eaac19421f9163b77320eda1dd751eb241b31c97605");
+             background-repeat: no-repeat;
+             background-size: cover;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 50px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <label for="email">User Email:</label>
+            <input type="text" id="email" name="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Invalid email format. Please enter a valid email address.");
+            } else if (!passwordPattern.test(password)) {
+                alert("Invalid password format. Please ensure your password meets the criteria:\n\n" +
+                      "1. At least 8 characters\n" +
+                      "2. At least one uppercase letter\n" +
+                      "3. At least one special character (@$!%*?&)\n" +
+                      "4. At least one number");
+            } else {
+                alert("Successful Sign Up!");
+            }
+        });
+    </script>
+</body>
+</html>
